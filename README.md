@@ -40,12 +40,13 @@
 
 | STT | Họ và tên | MSSV | Vai trò | Trách nhiệm chính |
 |:---:|:---|:---:|:---|:---|
-| 1 | **[Trưởng nhóm]** | ... | Team Leader / Fullstack | Quản lý dự án, thiết kế kiến trúc, review PR |
-| 2 | **[Thành viên 2]** | ... | Frontend Developer | Phát triển giao diện người dùng (UI/UX) |
-| 3 | **[Thành viên 3]** | ... | Backend Developer | Xây dựng API, quản lý cơ sở dữ liệu |
-| 4 | **[Thành viên 4]** | ... | Tester / Developer | Kiểm thử, viết tài liệu, hỗ trợ tính năng |
+| 1 | **[Trưởng nhóm]** | ... | Team Leader | Chưa giao |
+| 2 | **[Thành viên 2]** | ... | Member | Chưa giao |
+| 3 | **[Thành viên 3]** | ... | Member | Chưa giao |
+| 4 | **[Thành viên 4]** | ... | Member | Chưa giao |
+| 5 | **[Thành viên 5]** | ... | Member | Chưa giao |
 
-*(Vui lòng cập nhật lại thông tin chi tiết tên và MSSV của các thành viên trong nhóm)*
+*(Danh sách thành viên và nhiệm vụ cụ thể sẽ được cập nhật sau)*
 
 ---
 

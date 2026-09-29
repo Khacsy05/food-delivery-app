@@ -56,3 +56,4 @@ dist/
 out/
 coverage/
 *.log
+serviceAccountKey.json

@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bộ Sưu Tập 12 Bảng Màu Thương Hiệu F&B Nổi Tiếng Toàn Cầu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #090d16;
+      color: #f8fafc;
+      padding: 40px 20px;
+    }
+    h1 {
+      text-align: center;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+    p.sub {
+      text-align: center;
+      color: #94a3b8;
+      margin-bottom: 40px;
+      font-size: 15px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 32px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .mockup-wrapper {
+      background: #141b2d;
+      border-radius: 28px;
+      padding: 22px;
+      border: 1px solid #1f293d;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .mockup-wrapper:hover {
+      border-color: #3b82f6;
+      transform: translateY(-4px);
+    }
+    .mockup-header {
+      margin-bottom: 16px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .mockup-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 19px;
+      font-weight: 800;
+    }
+    .mockup-desc {
+      font-size: 13px;
+      color: #94a3b8;
+      margin-top: 6px;
+      line-height: 1.4;
+    }
+
+    /* Phone Shell */
+    .phone {
+      width: 100%;
+      border-radius: 30px;
+      padding: 16px;
+      box-shadow: 0 20px 35px rgba(0,0,0,0.35);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow: hidden;
+    }
+
+    /* Mini Components */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .search-box {
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-size: 13px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .banner {
+      border-radius: 16px;
+      padding: 16px;
+      color: #fff;
+      margin-bottom: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    .banner-tag {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      opacity: 0.9;
+    }
+    .banner-title {
+      font-size: 16px;
+      font-weight: 800;
+      margin: 4px 0;
+    }
+    .banner-btn {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      margin-top: 6px;
+      cursor: pointer;
+    }
+    .chips {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+      overflow-x: auto;
+    }
+    .chip {
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .food-card {
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+    .food-img {
+      height: 120px;
+      width: 100%;
+      object-fit: cover;
+    }
+    .food-body {
+      padding: 12px;
+    }
+    .food-title {
+      font-size: 14px;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+    .food-sub {
+      font-size: 11px;
+      margin-bottom: 10px;
+    }
+    .food-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .price {
+      font-size: 15px;
+      font-weight: 800;
+    }
+    .btn-add {
+      padding: 7px 16px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* ======================================================
+       6 BẢNG MÀU THỰC TẾ
+       ====================================================== */
+
+    /* THEME 1: Xanh Mint Tươi Mát (Baemin / UberEats) */
+    .t1 { background: #FFFFFF; color: #0F172A; }
+    .t1 .search-box { background: #F1F5F9; color: #64748B; border: 1px solid #E2E8F0; }
+    .t1 .banner { background: linear-gradient(135deg, #2AC1BC, #109C98); }
+    .t1 .banner-btn { background: #FFFFFF; color: #109C98; }
+    .t1 .chip.active { background: #2AC1BC; color: #fff; }
+    .t1 .chip.inactive { background: #F1F5F9; color: #475569; }
+    .t1 .food-card { background: #FFFFFF; border: 1px solid #E2E8F0; }
+    .t1 .food-title { color: #0F172A; }
+    .t1 .food-sub { color: #64748B; }
+    .t1 .price { color: #109C98; }
+    .t1 .btn-add { background: #2AC1BC; color: #fff; }
+
+    /* THEME 2: Xanh Lá Tươi Sạch (GrabFood) */
+    .t2 { background: #FFFFFF; color: #111827; }
+    .t2 .search-box { background: #F3F4F6; color: #6B7280; border: 1px solid #E5E7EB; }
+    .t2 .banner { background: linear-gradient(135deg, #00B14F, #00873C); }
+    .t2 .banner-btn { background: #FFFFFF; color: #00873C; }
+    .t2 .chip.active { background: #00B14F; color: #fff; }
+    .t2 .chip.inactive { background: #F3F4F6; color: #4B5563; }
+    .t2 .food-card { background: #FFFFFF; border: 1px solid #E5E7EB; }
+    .t2 .food-title { color: #111827; }
+    .t2 .food-sub { color: #6B7280; }
+    .t2 .price { color: #00B14F; }
+    .t2 .btn-add { background: #00B14F; color: #fff; }
+
+    /* THEME 3: Đỏ Đô Sang Trọng (Burgundy / High-end Gourmet) */
+    .t3 { background: #FAFAFA; color: #09090B; }
+    .t3 .search-box { background: #FFFFFF; color: #71717A; border: 1px solid #E4E4E7; }
+    .t3 .banner { background: linear-gradient(135deg, #E11D48, #9F1239); }
+    .t3 .banner-btn { background: #09090B; color: #FFFFFF; }
+    .t3 .chip.active { background: #E11D48; color: #fff; }
+    .t3 .chip.inactive { background: #FFFFFF; color: #52525B; border: 1px solid #E4E4E7; }
+    .t3 .food-card { background: #FFFFFF; border: 1px solid #E4E4E7; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+    .t3 .food-title { color: #09090B; }
+    .t3 .food-sub { color: #71717A; }
+    .t3 .price { color: #E11D48; }
+    .t3 .btn-add { background: #E11D48; color: #fff; }
+
+    /* THEME 4: Xanh Than & Cam Năng Động (Navy & Tangerine) */
+    .t4 { background: #F8FAFC; color: #0F172A; }
+    .t4 .search-box { background: #FFFFFF; color: #64748B; border: 1px solid #E2E8F0; }
+    .t4 .banner { background: linear-gradient(135deg, #0F172A, #1E293B); }
+    .t4 .banner-btn { background: #F97316; color: #FFFFFF; }
+    .t4 .chip.active { background: #0F172A; color: #fff; }
+    .t4 .chip.inactive { background: #FFFFFF; color: #475569; border: 1px solid #E2E8F0; }
+    .t4 .food-card { background: #FFFFFF; border: 1px solid #E2E8F0; }
+    .t4 .food-title { color: #0F172A; }
+    .t4 .food-sub { color: #64748B; }
+    .t4 .price { color: #F97316; }
+    .t4 .btn-add { background: #F97316; color: #fff; }
+
+    /* THEME 5: Vàng Mật Ong & Nâu Trầm (Honey Warmth / Bakery & Cafe) */
+    .t5 { background: #FCFAF8; color: #291E14; }
+    .t5 .search-box { background: #FFFFFF; color: #78716C; border: 1px solid #E7E5E4; }
+    .t5 .banner { background: linear-gradient(135deg, #D97706, #B45309); }
+    .t5 .banner-btn { background: #291E14; color: #FFFFFF; }
+    .t5 .chip.active { background: #D97706; color: #fff; }
+    .t5 .chip.inactive { background: #FFFFFF; color: #78716C; border: 1px solid #E7E5E4; }
+    .t5 .food-card { background: #FFFFFF; border: 1px solid #E7E5E4; }
+    .t5 .food-title { color: #291E14; }
+    .t5 .food-sub { color: #78716C; }
+    .t5 .price { color: #D97706; }
+    .t5 .btn-add { background: #D97706; color: #fff; }
+
+    /* THEME 6: Tối Giản Đen Graphite & Vàng Hổ Phách (Luxury Dark Mode) */
+    .t6 { background: #121214; color: #EDEDED; }
+    .t6 .search-box { background: #1C1C1F; color: #A1A1AA; border: 1px solid #27272A; }
+    .t6 .banner { background: linear-gradient(135deg, #F59E0B, #D97706); color: #000; }
+    .t6 .banner-btn { background: #000000; color: #FFFFFF; }
+    .t6 .chip.active { background: #F59E0B; color: #000; font-weight: 800; }
+    .t6 .chip.inactive { background: #1C1C1F; color: #A1A1AA; border: 1px solid #27272A; }
+    .t6 .food-card { background: #1C1C1F; border: 1px solid #27272A; }
+    .t6 .food-title { color: #FFFFFF; }
+    .t6 .food-sub { color: #71717A; }
+    /* THEME 7: ShopeeFood Đỏ Cam Đặc Trưng (ShopeeFood Official) */
+    .t7 { background: #F5F5F7; color: #222222; }
+    .t7 .search-box { background: #FFFFFF; color: #757575; border: 1px solid #E0E0E0; }
+    .t7 .banner { background: linear-gradient(135deg, #EE4D2D, #FF6433); }
+    .t7 .banner-btn { background: #FFFFFF; color: #EE4D2D; }
+    .t7 .chip.active { background: #EE4D2D; color: #fff; }
+    .t7 .chip.inactive { background: #FFFFFF; color: #555555; border: 1px solid #E0E0E0; }
+    .t7 .food-card { background: #FFFFFF; border: 1px solid #EAEAEA; box-shadow: 0 2px 6px rgba(0,0,0,0.04); }
+    .t7 .food-title { color: #222222; }
+    .t7 .food-sub { color: #757575; }
+    .t7 .price { color: #EE4D2D; font-size: 16px; font-weight: 800; }
+    .t7 .btn-add { background: #EE4D2D; color: #fff; }
+
+    /* THEME 8: ShopeeFood Cam Tươi Hiện Đại (Shopee Bright Orange) */
+    .t8 { background: #F8F9FA; color: #1A1A1A; }
+    .t8 .search-box { background: #FFFFFF; color: #888888; border: 1px solid #E5E7EB; }
+    .t8 .banner { background: linear-gradient(135deg, #FF5722, #FF7043); }
+    .t8 .banner-btn { background: #1A1A1A; color: #FFFFFF; }
+    .t8 .chip.active { background: #FF5722; color: #fff; }
+    .t8 .chip.inactive { background: #FFFFFF; color: #4B5563; border: 1px solid #E5E7EB; }
+    .t8 .food-card { background: #FFFFFF; border: 1px solid #E5E7EB; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
+    .t8 .food-title { color: #1A1A1A; }
+    .t8 .food-sub { color: #6B7280; }
+    .t8 .price { color: #FF5722; font-size: 16px; font-weight: 800; }
+    .t8 .btn-add { background: #FF5722; color: #fff; }
+
+    /* THEME 9: Foodpanda Hồng Magenta (#D70F64) */
+    .t9 { background: #FAFAFB; color: #1F1F24; }
+    .t9 .search-box { background: #FFFFFF; color: #767676; border: 1px solid #E8E8E8; }
+    .t9 .banner { background: linear-gradient(135deg, #D70F64, #FA2A7C); }
+    .t9 .banner-btn { background: #FFFFFF; color: #D70F64; }
+    .t9 .chip.active { background: #D70F64; color: #fff; }
+    .t9 .chip.inactive { background: #FFFFFF; color: #555555; border: 1px solid #E8E8E8; }
+    .t9 .food-card { background: #FFFFFF; border: 1px solid #EDEDED; box-shadow: 0 2px 8px rgba(215, 15, 100, 0.04); }
+    .t9 .food-title { color: #1F1F24; }
+    .t9 .food-sub { color: #767676; }
+    .t9 .price { color: #D70F64; font-size: 16px; font-weight: 800; }
+    .t9 .btn-add { background: #D70F64; color: #fff; }
+
+    /* THEME 10: DoorDash Đỏ Thể Thao (#FF3008) */
+    .t10 { background: #F7F7F7; color: #191919; }
+    .t10 .search-box { background: #FFFFFF; color: #767676; border: 1px solid #E4E4E4; }
+    .t10 .banner { background: linear-gradient(135deg, #FF3008, #E02602); }
+    .t10 .banner-btn { background: #191919; color: #FFFFFF; }
+    .t10 .chip.active { background: #FF3008; color: #fff; }
+    .t10 .chip.inactive { background: #FFFFFF; color: #494949; border: 1px solid #E4E4E4; }
+    .t10 .food-card { background: #FFFFFF; border: 1px solid #E4E4E4; box-shadow: 0 2px 6px rgba(0,0,0,0.04); }
+    .t10 .food-title { color: #191919; }
+    .t10 .food-sub { color: #767676; }
+    .t10 .price { color: #FF3008; font-size: 16px; font-weight: 800; }
+    .t10 .btn-add { background: #FF3008; color: #fff; }
+
+    /* THEME 11: Starbucks Xanh Rừng Đậm & Trắng Ngà (#006241) */
+    .t11 { background: #F2F0EB; color: #1E3932; }
+    .t11 .search-box { background: #FFFFFF; color: #706E6B; border: 1px solid #D4D2CD; }
+    .t11 .banner { background: linear-gradient(135deg, #006241, #1E3932); }
+    .t11 .banner-btn { background: #D4E9E2; color: #1E3932; }
+    .t11 .chip.active { background: #006241; color: #fff; }
+    .t11 .chip.inactive { background: #FFFFFF; color: #1E3932; border: 1px solid #D4D2CD; }
+    .t11 .food-card { background: #FFFFFF; border: 1px solid #D4D2CD; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
+    .t11 .food-title { color: #1E3932; }
+    .t11 .food-sub { color: #706E6B; }
+    .t11 .price { color: #006241; font-size: 16px; font-weight: 800; }
+    .t11 .btn-add { background: #006241; color: #fff; }
+
+    /* THEME 12: McDonald's Đỏ Vàng Kinh Điển (#DA291C + #FFC72C) */
+    .t12 { background: #FBFBFB; color: #27251F; }
+    .t12 .search-box { background: #FFFFFF; color: #767676; border: 1px solid #E5E5E5; }
+    .t12 .banner { background: linear-gradient(135deg, #DA291C, #BA1B10); }
+    .t12 .banner-btn { background: #FFC72C; color: #27251F; font-weight: 800; }
+    .t12 .chip.active { background: #DA291C; color: #fff; }
+    .t12 .chip.inactive { background: #FFFFFF; color: #27251F; border: 1px solid #E5E5E5; }
+    .t12 .food-card { background: #FFFFFF; border: 1px solid #E5E5E5; box-shadow: 0 2px 6px rgba(0,0,0,0.04); }
+    .t12 .food-title { color: #27251F; }
+    .t12 .food-sub { color: #767676; }
+    .t12 .price { color: #DA291C; font-size: 16px; font-weight: 800; }
+    .t12 .btn-add { background: #FFC72C; color: #27251F; font-weight: 800; }
+  </style>
+</head>
+<body>
+
+  <h1>Bộ Sưu Tập 6 Bảng Màu Thực Tế Cho FoodApp</h1>
+  <p class="sub">Các phong cách chuẩn app thực tế ngoài đời - Tối giản, hiện đại, không có cảm giác đồ họa AI</p>
+
+  <div class="grid">
+    <!-- OPTION 1 -->
+    <div class="mockup-wrapper">
+      <div class="mockup-header">
+        <span class="badge" style="background:#2AC1BC; color:#fff;">Tùy chọn 1 (Hot)</span>
+        <div class="mockup-title">Xanh Mint Tươi Mát (Baemin / UberEats)</div>
+        <div class="mockup-desc">Chủ đạo: <b>#2AC1BC</b> • Nền: Trắng sạch #FFFFFF.<br>Cực kỳ trẻ trung, mát mắt, sạch sẽ, chuẩn phong cách app Hàn Quốc.</div>
+      </div>
+      <div class="phone t1">
+        <div class="top-bar">
+          <div>
+            <div style="font-size:10px; color:#64748B;">Giao đến</div>
+            <div style="font-size:13px; font-weight:700;">12 Chùa Bộc, Đống Đa ▾</div>
+          </div>
+          <div style="font-size:16px;">🔔</div>
+        </div>
+        <div class="search-box">🔍 Tìm món ngon, quán ăn...</div>
+        <div class="banner">
+          <div class="banner-tag">ƯU ĐÃI ĐẶC QUYỀN</div>
+          <div class="banner-title">FREESHIP 0Đ HÔM NAY</div>
+          <div class="banner-btn">Khám Phá Ngay</div>
+        </div>
+        <div class="chips">
+          <div class="chip active">Tất cả</div>
+          <div class="chip inactive">Cơm</div>
+          <div class="chip inactive">Bún / Phở</div>
+          <div class="chip inactive">Trà Sữa</div>
+        </div>
+        <div class="food-card">
+          <img class="food-img" src="https://images.unsplash.com/photo-1544025162-d76694265947?w=500&auto=format&fit=crop&q=80" alt="Cơm sườn">
+          <div class="food-body">
+            <div class="food-title">Cơm Sườn Nướng Đặc Biệt</div>
+            <div class="food-sub">⭐ 4.9 • Cơm Tấm Cali • 1.2 km</div>
+            <div class="food-footer">
+              <div class="price">45.000đ</div>
+              <button class="btn-add">+ Thêm</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OPTION 2 -->
+    <div class="mockup-wrapper">
+      <div class="mockup-header">
+        <span class="badge" style="background:#00B14F; color:#fff;">Tùy chọn 2</span>
+        <div class="mockup-title">Xanh Lá Cây Tươi Sạch (GrabFood)</div>
+        <div class="mockup-desc">Chủ đạo: <b>#00B14F</b> • Nền: Trắng tinh #FFFFFF.<br>Tạo cảm giác an tâm, thức ăn an toàn vệ sinh, quen thuộc với người dùng.</div>
+      </div>
+      <div class="phone t2">
+        <div class="top-bar">
+          <div>
+            <div style="font-size:10px; color:#6B7280;">Giao đến</div>
+            <div style="font-size:13px; font-weight:700;">12 Chùa Bộc, Đống Đa ▾</div>
+          </div>
+          <div style="font-size:16px;">🔔</div>
+        </div>
+        <div class="search-box">🔍 Tìm món ngon, quán ăn...</div>
+        <div class="banner">
+          <div class="banner-tag">GRABFOOD ƯU ĐÃI</div>
+          <div class="banner-title">GIẢM 40K ĐƠN ĐẦU</div>
+          <div class="banner-btn">Đặt Ngay</div>
+        </div>
+        <div class="chips">
+          <div class="chip active">Tất cả</div>
+          <div class="chip inactive">Cơm</div>
+          <div class="chip inactive">Bún / Phở</div>
+          <div class="chip inactive">Trà Sữa</div>
+        </div>
+        <div class="food-card">
+          <img class="food-img" src="https://images.unsplash.com/photo-1544025162-d76694265947?w=500&auto=format&fit=crop&q=80" alt="Cơm sườn">
+          <div class="food-body">
+            <div class="food-title">Cơm Sườn Nướng Đặc Biệt</div>
+            <div class="food-sub">⭐ 4.9 • Cơm Tấm Cali • 1.2 km</div>
+            <div class="food-footer">
+              <div class="price">45.000đ</div>
+              <button class="btn-add">+ Thêm</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OPTION 3 -->
+    <div class="mockup-wrapper">
+      <div class="mockup-header">
+        <span class="badge" style="background:#E11D48; color:#fff;">Tùy chọn 3</span>
+        <div class="mockup-title">Đỏ Đô Sang Trọng (Crimson Gourmet)</div>
+        <div class="mockup-desc">Chủ đạo: <b>#E11D48</b> • Nền: Trắng xám tinh tế #FAFAFA.<br>Kích thích mạnh vị giác, phong cách nhà hàng chuẩn Michelin, cực sang.</div>
+      </div>
+      <div class="phone t3">
+        <div class="top-bar">
+          <div>
+            <div style="font-size:10px; color:#71717A;">Giao đến</div>
+            <div style="font-size:13px; font-weight:700;">12 Chùa Bộc, Đống Đa ▾</div>
+          </div>
+          <div style="font-size:16px;">🔔</div>
+        </div>
+        <div class="search-box">🔍 Tìm món ngon, quán ăn...</div>
+        <div class="banner">
+          <div class="banner-tag">MÓN NGON MỖI NGÀY</div>
+          <div class="banner-title">MÓN NGON ĐỒNG GIÁ 39K</div>
+          <div class="banner-btn">Xem Thêm</div>
+        </div>
+        <div class="chips">
+          <div class="chip active">Tất cả</div>
+          <div class="chip inactive">Cơm</div>
+          <div class="chip inactive">Bún / Phở</div>
+          <div class="chip inactive">Trà Sữa</div>
+        </div>
+        <div class="food-card">
+          <img class="food-img" src="https://images.unsplash.com/photo-1544025162-d76694265947?w=500&auto=format&fit=crop&q=80" alt="Cơm sườn">
+          <div class="food-body">
+            <div class="food-title">Cơm Sườn Nướng Đặc Biệt</div>
+            <div class="food-sub">⭐ 4.9 • Cơm Tấm Cali • 1.2 km</div>
+            <div class="food-footer">
+              <div class="price">45.000đ</div>
+              <button class="btn-add">+ Thêm</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OPTION 4 -->
+    <div class="mockup-wrapper">
+      <div class="mockup-header">
+        <span class="badge" style="background:#0F172A; color:#fff; border:1px solid #334155;">Tùy chọn 4</span>
+        <div class="mockup-title">Xanh Than & Cam Tangerine (Hiện đại & Tối giản)</div>
+        <div class="mockup-desc">Chủ đạo: <b>#0F172A</b> (Navy) & Nhấn <b>#F97316</b> • Nền: #F8FAFC.<br>Giao diện công nghệ cao, màu cam chỉ làm điểm nhấn cho giá và nút bấm.</div>
+      </div>
+      <div class="phone t4">
+        <div class="top-bar">
+          <div>
+            <div style="font-size:10px; color:#64748B;">Giao đến</div>
+            <div style="font-size:13px; font-weight:700;">12 Chùa Bộc, Đống Đa ▾</div>
+          </div>
+          <div style="font-size:16px;">🔔</div>
+        </div>
+        <div class="search-box">🔍 Tìm món ngon, quán ăn...</div>
+        <div class="banner">
+          <div class="banner-tag">ƯU ĐÃI THÀNH VIÊN</div>
+          <div class="banner-title">GIẢM 30% ĐƠN ĐẦU TIÊN</div>
+          <div class="banner-btn">Khám Phá</div>
+        </div>
+        <div class="chips">
+          <div class="chip active">Tất cả</div>
+          <div class="chip inactive">Cơm</div>
+          <div class="chip inactive">Bún / Phở</div>
+          <div class="chip inactive">Trà Sữa</div>
+        </div>
+        <div class="food-card">
+          <img class="food-img" src="https://images.unsplash.com/photo-1544025162-d76694265947?w=500&auto=format&fit=crop&q=80" alt="Cơm sườn">
+          <div class="food-body">
+            <div class="food-title">Cơm Sườn Nướng Đặc Biệt</div>
+            <div class="food-sub">⭐ 4.9 • Cơm Tấm Cali • 1.2 km</div>
+            <div class="food-footer">
+              <div class="price">45.000đ</div>
+              <button class="btn-add">+ Thêm</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OPTION 5 -->
+    <div class="mockup-wrapper">
+      <div class="mockup-header">
+        <span class="badge" style="background:#D97706; color:#fff;">Tùy chọn 5</span>
+        <div class="mockup-title">Vàng Mật Ong & Nâu Ấm (Bakery & Cozy Cafe)</div>
+        <div class="mockup-desc">Chủ đạo: <b>#D97706</b> (Amber Gold) • Nền: Trắng kem sữa #FCFAF8.<br>Tạo cảm giác ấm cúng, thư thái, mộc mạc và gần gũi.</div>
+      </div>
+      <div class="phone t5">
+        <div class="top-bar">
+          <div>
+            <div style="font-size:10px; color:#78716C;">Giao đến</div>
+            <div style="font-size:13px; font-weight:700;">12 Chùa Bộc, Đống Đa ▾</div>
+          </div>
+          <div style="font-size:16px;">🔔</div>
+        </div>
+        <div class="search-box">🔍 Tìm món ngon, quán ăn...</div>
+        <div class="banner">
+          <div class="banner-tag">COZY MEALS</div>
+          <div class="banner-title">MÓN NÓNG HỔI TẬN BÀN</div>
+          <div class="banner-btn">Thưởng Thức</div>
+        </div>
+        <div class="chips">
+          <div class="chip active">Tất cả</div>
+          <div class="chip inactive">Cơm</div>
+          <div class="chip inactive">Bún / Phở</div>
+          <div class="chip inactive">Trà Sữa</div>
+        </div>
+        <div class="food-card">
+          <img class="food-img" src="https://images.unsplash.com/photo-1544025162-d76694265947?w=500&auto=format&fit=crop&q=80" alt="Cơm sườn">
+          <div class="food-body">
+            <div class="food-title">Cơm Sườn Nướng Đặc Biệt</div>
+            <div class="food-sub">⭐ 4.9 • Cơm Tấm Cali • 1.2 km</div>
+            <div class="food-footer">
+              <div class="price">45.000đ</div>
+              <button class="btn-add">+ Thêm</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OPTION 6 -->
+    <div class="mockup-wrapper">
+      <div class="mockup-header">
+        <span class="badge" style="background:#F59E0B; color:#000;">Tùy chọn 6</span>
+        <div class="mockup-title">Đen Than Chì & Vàng Hổ Phách (Luxury Dark Mode)</div>
+        <div class="mockup-desc">Chủ đạo: <b>#F59E0B</b> • Nền: Đen nhám #121214.<br>Dành cho phong cách huyền bí, hiện đại, ăn đêm (Night food), siêu ngầu.</div>
+      </div>
+      <div class="phone t6">
+        <div class="top-bar">
+          <div>
+            <div style="font-size:10px; color:#71717A;">Giao đến</div>
+            <div style="font-size:13px; font-weight:700;">12 Chùa Bộc, Đống Đa ▾</div>
+          </div>
+          <div style="font-size:16px;">🔔</div>
+        </div>
+        <div class="search-box">🔍 Tìm món ngon, quán ăn...</div>
+        <div class="banner">
+          <div class="banner-tag">ĐƠN ĐÊM GIẢM GIÁ</div>
+          <div class="banner-title">FREESHIP ĐÊM 0Đ</div>
+          <div class="banner-btn">Khám Phá</div>
+        </div>
+        <div class="chips">
+          <div class="chip active">Tất cả</div>
+          <div class="chip inactive">Cơm</div>
+          <div class="chip inactive">Bún / Phở</div>
+          <div class="chip inactive">Trà Sữa</div>
+        </div>
+        <div class="food-card">
+          <img class="food-img" src="https://images.unsplash.com/photo-1544025162-d76694265947?w=500&auto=format&fit=crop&q=80" alt="Cơm sườn">
+          <div class="food-body">
+            <div class="food-title">Cơm Sườn Nướng Đặc Biệt</div>
+            <div class="food-sub">⭐ 4.9 • Cơm Tấm Cali • 1.2 km</div>
+            <div class="food-footer">
+              <div class="price">45.000đ</div>
+              <button class="btn-add">+ Thêm</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OPTION 7: SHOPEEFOOD CHÍNH HÃNG -->
+    <div class="mockup-wrapper">
+      <div class="mockup-header">
+        <span class="badge" style="background:#EE4D2D; color:#fff;">Tùy chọn 7 (ShopeeFood Chính Thức)</span>
+        <div class="mockup-title">ShopeeFood Đỏ Cam (#EE4D2D)</div>
+        <div class="mockup-desc">Màu chuẩn của <b>Shopee & ShopeeFood</b> tại Việt Nam • Nền: Trắng xám tối giản #F5F5F7.<br>Nhận diện thương hiệu cực mạnh, tạo cảm giác sale khủng, giảm giá liên tục.</div>
+      </div>
+      <div class="phone t7">
+        <div class="top-bar">
+          <div>
+            <div style="font-size:10px; color:#757575;">Giao đến</div>
+            <div style="font-size:13px; font-weight:700;">12 Chùa Bộc, Đống Đa ▾</div>
+          </div>
+          <div style="font-size:16px;">🔔</div>
+        </div>
+        <div class="search-box">🔍 ShopeeFood giảm 50%...</div>
+        <div class="banner">
+          <div class="banner-tag">SIÊU TIỆC SHOPEEFOOD</div>
+          <div class="banner-title">VOUCHER GIẢM 50K</div>
+          <div class="banner-btn">Lấy Mã Ngay</div>
+        </div>
+        <div class="chips">
+          <div class="chip active">Tất cả</div>
+          <div class="chip inactive">Cơm</div>
+          <div class="chip inactive">Bún / Phở</div>
+          <div class="chip inactive">Trà Sữa</div>
+        </div>
+        <div class="food-card">
+          <img class="food-img" src="https://images.unsplash.com/photo-1544025162-d76694265947?w=500&auto=format&fit=crop&q=80" alt="Cơm sườn">
+          <div class="food-body">
+            <div class="food-title">Cơm Sườn Nướng Đặc Biệt</div>
+            <div class="food-sub">⭐ 4.9 • Cơm Tấm Cali • 1.2 km</div>
+            <div class="food-footer">
+              <div class="price">45.000đ</div>
+              <button class="btn-add">+ Thêm</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OPTION 8: SHOPEEFOOD CAM NĂNG ĐỘNG -->
+    <div class="mockup-wrapper">
+      <div class="mockup-header">
+        <span class="badge" style="background:#FF5722; color:#fff;">Tùy chọn 8 (ShopeeFood Cam Hiện Đại)</span>
+        <div class="mockup-title">ShopeeFood Cam Tươi (#FF5722)</div>
+        <div class="mockup-desc">Màu cam tươi chuẩn quốc tế • Nền: Trắng tinh sạch sẽ #F8F9FA.<br>Rất bắt mắt, kích thích sự thèm ăn, phong cách app giao món nhanh hiện đại.</div>
+      </div>
+      <div class="phone t8">
+        <div class="top-bar">
+          <div>
+            <div style="font-size:10px; color:#888888;">Giao đến</div>
+            <div style="font-size:13px; font-weight:700;">12 Chùa Bộc, Đống Đa ▾</div>
+          </div>
+          <div style="font-size:16px;">🔔</div>
+        </div>
+        <div class="search-box">🔍 Tìm quán ngon gần bạn...</div>
+        <div class="banner">
+          <div class="banner-tag">ĐẠI TIỆC CUỐI TUẦN</div>
+          <div class="banner-title">FREESHIP ĐƠN TỪ 0Đ</div>
+          <div class="banner-btn">Khám Phá</div>
+        </div>
+        <div class="chips">
+          <div class="chip active">Tất cả</div>
+          <div class="chip inactive">Cơm</div>
+          <div class="chip inactive">Bún / Phở</div>
+          <div class="chip inactive">Trà Sữa</div>
+        </div>
+        <div class="food-card">
+          <img class="food-img" src="https://images.unsplash.com/photo-1544025162-d76694265947?w=500&auto=format&fit=crop&q=80" alt="Cơm sườn">
+          <div class="food-body">
+            <div class="food-title">Cơm Sườn Nướng Đặc Biệt</div>
+            <div class="food-sub">⭐ 4.9 • Cơm Tấm Cali • 1.2 km</div>
+            <div class="food-footer">
+              <div class="price">45.000đ</div>
+              <button class="btn-add">+ Thêm</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OPTION 9: FOODPANDA HỒNG MAGENTA -->
+    <div class="mockup-wrapper">
+      <div class="mockup-header">
+        <span class="badge" style="background:#D70F64; color:#fff;">Tùy chọn 9 (Foodpanda Toàn Cầu)</span>
+        <div class="mockup-title">Foodpanda Magenta (#D70F64)</div>
+        <div class="mockup-desc">Thương hiệu giao đồ ăn nổi tiếng Châu Á • Nền: Trắng ngà nhạt #FAFAFB.<br>Sắc sảo, phong cách trẻ trung, kích thích năng lượng và đơn hàng đồ ngọt/fastfood.</div>
+      </div>
+      <div class="phone t9">
+        <div class="top-bar">
+          <div>
+            <div style="font-size:10px; color:#767676;">Giao đến</div>
+            <div style="font-size:13px; font-weight:700;">12 Chùa Bộc, Đống Đa ▾</div>
+          </div>
+          <div style="font-size:16px;">🔔</div>
+        </div>
+        <div class="search-box">🔍 Thèm món gì gõ tên món...</div>
+        <div class="banner">
+          <div class="banner-tag">GIAO NHANH 15 PHÚT</div>
+          <div class="banner-title">PANDA DEAL GIẢM 60K</div>
+          <div class="banner-btn">Đặt Liền</div>
+        </div>
+        <div class="chips">
+          <div class="chip active">Tất cả</div>
+          <div class="chip inactive">Cơm</div>
+          <div class="chip inactive">Bún / Phở</div>
+          <div class="chip inactive">Trà Sữa</div>
+        </div>
+        <div class="food-card">
+          <img class="food-img" src="https://images.unsplash.com/photo-1544025162-d76694265947?w=500&auto=format&fit=crop&q=80" alt="Cơm sườn">
+          <div class="food-body">
+            <div class="food-title">Cơm Sườn Nướng Đặc Biệt</div>
+            <div class="food-sub">⭐ 4.9 • Cơm Tấm Cali • 1.2 km</div>
+            <div class="food-footer">
+              <div class="price">45.000đ</div>
+              <button class="btn-add">+ Thêm</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OPTION 10: DOORDASH ĐỎ THỂ THAO -->
+    <div class="mockup-wrapper">
+      <div class="mockup-header">
+        <span class="badge" style="background:#FF3008; color:#fff;">Tùy chọn 10 (DoorDash Mỹ)</span>
+        <div class="mockup-title">DoorDash Crimson (#FF3008)</div>
+        <div class="mockup-desc">App giao đồ ăn #1 tại Hoa Kỳ • Nền: Trắng xám công nghệ #F7F7F7.<br>Táo bạo, dứt khoát, hiện đại, tỉ lệ chuyển đổi đơn hàng cực cao.</div>
+      </div>
+      <div class="phone t10">
+        <div class="top-bar">
+          <div>
+            <div style="font-size:10px; color:#767676;">Giao đến</div>
+            <div style="font-size:13px; font-weight:700;">12 Chùa Bộc, Đống Đa ▾</div>
+          </div>
+          <div style="font-size:16px;">🔔</div>
+        </div>
+        <div class="search-box">🔍 Tìm kiếm nhà hàng ưa thích...</div>
+        <div class="banner">
+          <div class="banner-tag">DASH PASS ƯU ĐÃI</div>
+          <div class="banner-title">MIỄN PHÍ GIAO HÀNG</div>
+          <div class="banner-btn">Dùng Thử</div>
+        </div>
+        <div class="chips">
+          <div class="chip active">Tất cả</div>
+          <div class="chip inactive">Cơm</div>
+          <div class="chip inactive">Bún / Phở</div>
+          <div class="chip inactive">Trà Sữa</div>
+        </div>
+        <div class="food-card">
+          <img class="food-img" src="https://images.unsplash.com/photo-1544025162-d76694265947?w=500&auto=format&fit=crop&q=80" alt="Cơm sườn">
+          <div class="food-body">
+            <div class="food-title">Cơm Sườn Nướng Đặc Biệt</div>
+            <div class="food-sub">⭐ 4.9 • Cơm Tấm Cali • 1.2 km</div>
+            <div class="food-footer">
+              <div class="price">45.000đ</div>
+              <button class="btn-add">+ Thêm</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OPTION 11: STARBUCKS XANH RỪNG -->
+    <div class="mockup-wrapper">
+      <div class="mockup-header">
+        <span class="badge" style="background:#006241; color:#fff;">Tùy chọn 11 (Starbucks Cafe & Gourmet)</span>
+        <div class="mockup-title">Starbucks Deep Green (#006241)</div>
+        <div class="mockup-desc">Thương hiệu F&B cao cấp • Nền: Màu be ấm sữa #F2F0EB.<br>Sang trọng, thư giãn, thiên hướng cafe, bánh ngọt, organic và đồ ăn healthy.</div>
+      </div>
+      <div class="phone t11">
+        <div class="top-bar">
+          <div>
+            <div style="font-size:10px; color:#706E6B;">Giao đến</div>
+            <div style="font-size:13px; font-weight:700;">12 Chùa Bộc, Đống Đa ▾</div>
+          </div>
+          <div style="font-size:16px;">🔔</div>
+        </div>
+        <div class="search-box">🔍 Thức uống, bánh ngọt tươi...</div>
+        <div class="banner">
+          <div class="banner-tag">STARBUCKS REWARDS</div>
+          <div class="banner-title">NHÂN ĐÔI ĐIỂM SAO</div>
+          <div class="banner-btn">Khám Phá</div>
+        </div>
+        <div class="chips">
+          <div class="chip active">Tất cả</div>
+          <div class="chip inactive">Cơm</div>
+          <div class="chip inactive">Bún / Phở</div>
+          <div class="chip inactive">Trà Sữa</div>
+        </div>
+        <div class="food-card">
+          <img class="food-img" src="https://images.unsplash.com/photo-1544025162-d76694265947?w=500&auto=format&fit=crop&q=80" alt="Cơm sườn">
+          <div class="food-body">
+            <div class="food-title">Cơm Sườn Nướng Đặc Biệt</div>
+            <div class="food-sub">⭐ 4.9 • Cơm Tấm Cali • 1.2 km</div>
+            <div class="food-footer">
+              <div class="price">45.000đ</div>
+              <button class="btn-add">+ Thêm</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OPTION 12: MCDONALD'S ĐỎ VÀNG KINH ĐIỂN -->
+    <div class="mockup-wrapper">
+      <div class="mockup-header">
+        <span class="badge" style="background:#DA291C; color:#FFC72C; font-weight:900;">Tùy chọn 12 (McDonald's Fast Food)</span>
+        <div class="mockup-title">McDonald's Red & Gold (#DA291C + #FFC72C)</div>
+        <div class="mockup-desc">Chuỗi thức ăn nhanh số 1 thế giới • Nền: Trắng sáng #FBFBFB.<br>Bộ đôi Đỏ - Vàng kinh điển trong tâm lý học thực phẩm, thôi thúc khách gọi món ngay tức thì.</div>
+      </div>
+      <div class="phone t12">
+        <div class="top-bar">
+          <div>
+            <div style="font-size:10px; color:#767676;">Giao đến</div>
+            <div style="font-size:13px; font-weight:700;">12 Chùa Bộc, Đống Đa ▾</div>
+          </div>
+          <div style="font-size:16px;">🔔</div>
+        </div>
+        <div class="search-box">🔍 Combo gà rán, burger, khoai...</div>
+        <div class="banner">
+          <div class="banner-tag">MCDELIVERY TIỆC LỚN</div>
+          <div class="banner-title">COMBO SIÊU TIẾT KIỆM</div>
+          <div class="banner-btn">Đặt Combo</div>
+        </div>
+        <div class="chips">
+          <div class="chip active">Tất cả</div>
+          <div class="chip inactive">Cơm</div>
+          <div class="chip inactive">Bún / Phở</div>
+          <div class="chip inactive">Trà Sữa</div>
+        </div>
+        <div class="food-card">
+          <img class="food-img" src="https://images.unsplash.com/photo-1544025162-d76694265947?w=500&auto=format&fit=crop&q=80" alt="Cơm sườn">
+          <div class="food-body">
+            <div class="food-title">Cơm Sườn Nướng Đặc Biệt</div>
+            <div class="food-sub">⭐ 4.9 • Cơm Tấm Cali • 1.2 km</div>
+            <div class="food-footer">
+              <div class="price">45.000đ</div>
+              <button class="btn-add">+ Thêm</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

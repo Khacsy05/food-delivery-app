@@ -86,9 +86,24 @@ Hệ thống đã có sẵn 4 tài khoản phân quyền trên Firebase Authenti
 
 > Dành cho các bạn trong nhóm mới kéo code về máy lần đầu tiên. Làm theo đúng từng bước bên dưới:
 
-### Bước 1: Yêu cầu chuẩn bị trên máy tính
+### Bước 1: Yêu cầu môi trường chuẩn (System Requirements)
+
+> ⚠️ **LƯU Ý QUAN TRỌNG:** Để tránh lỗi xung đột thư viện khi chạy trên máy ảo Android hoặc Web Chrome giữa các thành viên trong nhóm, các máy cần tuân thủ bảng môi trường chuẩn sau:
+
+| Thành phần | Phiên bản chuẩn | Ghi chú / Mục đích |
+| :--- | :--- | :--- |
+| **Flutter SDK** | **3.22.x** (khuyên dùng `3.22.2`) | Kênh stable, chạy `flutter --version` để kiểm tra |
+| **Dart SDK** | **3.4.x** (đi kèm Flutter 3.22) | Đảm bảo tương thích với các gói `google_fonts 6.2.1` |
+| **Java (JDK)** | **Java 17** (OpenJDK / Temurin 17) | **Bắt buộc cho Android**: Gradle 8+ và Firebase yêu cầu tối thiểu Java 17 |
+| **Gradle** | **8.4** | Đã ghim sẵn trong `gradle-wrapper.properties` |
+| **Android Gradle Plugin (AGP)** | **8.3.2** | Cấu hình trong `android/settings.gradle` |
+| **Kotlin** | **1.9.24** | Đảm bảo tương thích Firebase & Coroutines mới |
+| **Android NDK** | **25.1.8937393** | Tải tự động qua Android SDK Manager |
+| **Android SDK Build-Tools** | **34.0.0** | Yêu cầu bởi các plugin Firebase & Google Play Services |
+| **minSdkVersion** | **23** (Android 6.0+) | Yêu cầu bởi `cloud_firestore` |
+
 - Cài đặt **Git** ([Tải tại đây](https://git-scm.com/)).
-- Cài đặt **Flutter SDK** (Khuyên dùng bản 3.22 trở lên) ([Hướng dẫn tải](https://docs.flutter.dev/get-started/install)).
+- Cài đặt **JDK 17**: [Tải Eclipse Temurin JDK 17](https://adoptium.net/temurin/releases/?version=17) và đặt biến môi trường `JAVA_HOME`.
 - Biên tập code: Khuyên dùng **VS Code** (đã cài extension *Flutter* và *Dart*) hoặc **Android Studio**.
 
 ### Bước 2: Clone dự án về máy

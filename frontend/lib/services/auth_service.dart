@@ -50,31 +50,37 @@ class AuthService {
     required String name,
     required String phone,
   }) async {
-    final credential = await _auth.createUserWithEmailAndPassword(
-      email: email.trim(),
-      password: password,
-    );
+    try {
+      final credential = await _auth.createUserWithEmailAndPassword(
+        email: email.trim(),
+        password: password,
+      );
 
-    if (credential.user == null) {
-      return null;
+      if (credential.user == null) {
+        return null;
+      }
+
+      final newUser = UserModel(
+        uid: credential.user!.uid,
+        name: name,
+        email: email,
+        phone: phone,
+        avatarUrl:
+            'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde',
+        roles: ['customer'],
+        activeRole: 'customer',
+        defaultAddress: null,
+      );
+
+      await _firestore.collection('users').doc(newUser.uid).set({
+        ...newUser.toMap(),
+        'createdAt': FieldValue.serverTimestamp(),
+      });
+
+      return newUser;
+    } on FirebaseAuthException {
+      rethrow;
     }
-
-    final newUser = UserModel(
-      uid: credential.user!.uid,
-      name: name,
-      email: email,
-      phone: phone,
-      avatarUrl: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde',
-      roles: ['customer'],
-      activeRole: 'customer',
-    );
-
-    await _firestore.collection('users').doc(newUser.uid).set({
-      ...newUser.toMap(),
-      'createdAt': FieldValue.serverTimestamp(),
-    });
-
-    return newUser;
   }
 
   // reset mật khẩu

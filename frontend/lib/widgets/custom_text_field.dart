@@ -10,6 +10,9 @@ class CustomTextField extends StatelessWidget {
   final bool obscureText;
   final TextInputType keyboardType;
   final String? Function(String?)? validator;
+  final double labelFontSize;
+  final double fieldHeight;
+  final double borderRadius;
 
   const CustomTextField({
     super.key,
@@ -21,6 +24,9 @@ class CustomTextField extends StatelessWidget {
     this.obscureText = false,
     this.keyboardType = TextInputType.text,
     this.validator,
+    this.labelFontSize = 14,
+    this.fieldHeight = 50,
+    this.borderRadius = 12,
   });
 
   @override
@@ -30,40 +36,81 @@ class CustomTextField extends StatelessWidget {
       children: [
         Text(
           label,
-          style: const TextStyle(
-            fontSize: 14,
+          style: TextStyle(
+            fontSize: labelFontSize,
             fontWeight: FontWeight.w600,
             color: AppColors.textPrimary,
           ),
         ),
-        const SizedBox(height: 6),
-        TextFormField(
-          controller: controller,
-          obscureText: obscureText,
-          keyboardType: keyboardType,
-          enableSuggestions: false,
-          autocorrect: false,
-          autofillHints: const [],
-          validator: validator,
-          decoration: InputDecoration(
-            hintText: hintText,
-            hintStyle: const TextStyle(color: AppColors.textMuted, fontSize: 14),
-            prefixIcon: prefixIcon != null ? Icon(prefixIcon, color: AppColors.textSecondary, size: 20) : null,
-            suffixIcon: suffixIcon,
-            filled: true,
-            fillColor: Colors.white,
-            contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: AppColors.border),
+
+        const SizedBox(height: 5),
+
+        SizedBox(
+          height: fieldHeight,
+          child: TextFormField(
+            controller: controller,
+            obscureText: obscureText,
+            keyboardType: keyboardType,
+            enableSuggestions: false,
+            autocorrect: false,
+            validator: validator,
+
+            style: const TextStyle(
+              fontSize: 11,
+              color: AppColors.textPrimary,
             ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: AppColors.border),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: AppColors.primary, width: 1.5),
+
+            decoration: InputDecoration(
+              hintText: hintText,
+
+              hintStyle: const TextStyle(
+                color: AppColors.textMuted,
+                fontSize: 10,
+              ),
+
+              prefixIcon: prefixIcon != null
+                  ? Icon(
+                      prefixIcon,
+                      color: AppColors.primary,
+                      size: 17,
+                    )
+                  : null,
+
+              suffixIcon: suffixIcon,
+
+              filled: true,
+              fillColor: Colors.white,
+
+              contentPadding:
+                  const EdgeInsets.symmetric(
+                horizontal: 12,
+                vertical: 0,
+              ),
+
+              border: OutlineInputBorder(
+                borderRadius:
+                    BorderRadius.circular(borderRadius),
+                borderSide: const BorderSide(
+                  color: AppColors.border,
+                ),
+              ),
+
+              enabledBorder: OutlineInputBorder(
+                borderRadius:
+                    BorderRadius.circular(borderRadius),
+                borderSide: const BorderSide(
+                  color: AppColors.border,
+                ),
+              ),
+
+              focusedBorder: OutlineInputBorder(
+                borderRadius:
+                    BorderRadius.circular(borderRadius),
+                borderSide: const BorderSide(
+                  color: AppColors.primary,
+                  width: 1.3,
+                ),
+              ),
             ),
           ),
         ),

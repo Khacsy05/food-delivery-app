@@ -146,30 +146,6 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  // =========================================================
-  // OLD DEMO BUTTON
-  // Giữ lại để không mất chức năng hiện tại.
-  // =========================================================
-
-  Widget _buildOldDemoChip(
-    String label,
-    String email,
-  ) {
-    return ActionChip(
-      backgroundColor: Colors.white,
-      side: const BorderSide(
-        color: Color(0xFFE1E6EC),
-      ),
-      label: Text(
-        label,
-        style: const TextStyle(
-          fontSize: 11,
-          color: Color(0xFF455064),
-        ),
-      ),
-      onPressed: () => _fillAccount(email),
-    );
-  }
 
   // =========================================================
   // SOCIAL BUTTON
@@ -922,31 +898,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
                         const SizedBox(height: 5),
 
-                        Wrap(
-                          alignment: WrapAlignment.center,
-                          spacing: 5,
-                          runSpacing: 4,
-                          children: [
-                            _buildOldDemoChip(
-                              '👤 Khách hàng',
-                              'khach@gmail.com',
-                            ),
-                            _buildOldDemoChip(
-                              '🏪 Chủ quán',
-                              'chuquan@gmail.com',
-                            ),
-                            _buildOldDemoChip(
-                              '🛵 Tài xế',
-                              'taixe@gmail.com',
-                            ),
-                            _buildOldDemoChip(
-                              '🛡️ Admin',
-                              'admin@gmail.com',
-                            ),
-                          ],
-                        ),
-
-                        const SizedBox(height: 4),
                       ],
                     ),
                   ),

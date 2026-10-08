@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../constants/app_colors.dart';
 import '../../providers/auth_provider.dart';
+import 'register_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -18,6 +19,14 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
 
   bool _obscurePassword = true;
+
+  void _goToRegister() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => const RegisterScreen(),
+      ),
+    );
+  }
 
   @override
   void dispose() {
@@ -53,7 +62,11 @@ class _LoginScreenState extends State<LoginScreen> {
       _passwordController.text,
     );
 
-    if (!success && mounted) {
+    if (success && mounted) {
+      // Login can be shown as a pushed route after registration. Remove that
+      // route so the root AuthWrapper can display the role's home screen.
+      Navigator.of(context).popUntil((route) => route.isFirst);
+    } else if (mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
@@ -437,10 +450,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                               Expanded(
                                 child: InkWell(
-                                  onTap: () {
-                                    // TODO:
-                                    // Điều hướng RegisterScreen
-                                  },
+                                  onTap: _goToRegister,
 
                                   child: const Center(
                                     child: Text(
@@ -854,10 +864,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
 
                             GestureDetector(
-                              onTap: () {
-                                // TODO:
-                                // Điều hướng RegisterScreen
-                              },
+                              onTap: _goToRegister,
 
                               child: const Text(
                                 'Đăng ký ngay',
@@ -885,19 +892,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           color: Color(0xFFE5E7EB),
                         ),
 
-                        const SizedBox(height: 8),
-
-                        const Text(
-                          'Tài khoản mẫu kiểm thử nhanh',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 9,
-                            color: Color(0xFF8A94A3),
-                          ),
-                        ),
-
-                        const SizedBox(height: 5),
-
+                        const SizedBox(height: 8)
                       ],
                     ),
                   ),

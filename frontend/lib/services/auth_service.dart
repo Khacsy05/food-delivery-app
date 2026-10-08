@@ -77,6 +77,10 @@ class AuthService {
         'createdAt': FieldValue.serverTimestamp(),
       });
 
+      // createUserWithEmailAndPassword signs in automatically. Sign out so a
+      // successful registration returns the user to the login flow.
+      await _auth.signOut();
+
       return newUser;
     } on FirebaseAuthException {
       rethrow;

@@ -34,7 +34,12 @@ class AuthProvider extends ChangeNotifier {
         _authService.authStateChanges.listen((User? firebaseUser) async {
       try {
         if (firebaseUser != null) {
-          _user = await _authService.getUserProfile(firebaseUser.uid);
+          final profile = await _authService.getUserProfile(firebaseUser.uid);
+          // Ignore a profile lookup that finishes after this account signed out
+          // or another account became active.
+          if (_authService.currentUser?.uid == firebaseUser.uid) {
+            _user = profile;
+          }
         } else {
           _user = null;
         }
@@ -76,14 +81,16 @@ class AuthProvider extends ChangeNotifier {
     _errorMessage = null;
 
     try {
-      _user = await _authService.registerWithEmail(
+      await _authService.registerWithEmail(
         email: email,
         password: password,
         name: name,
         phone: phone,
       );
-
-      return _user != null;
+      // Firebase signs a newly created account in automatically. Registration
+      // should finish at the login screen, so do not expose it as authenticated.
+      _user = null;
+      return true;
     } catch (e) {
       _errorMessage = _authService.getErrorMessage(e);
 
@@ -116,13 +123,18 @@ class AuthProvider extends ChangeNotifier {
   // Đổi vai trò hoạt động
   Future<bool> switchRole(String newRole) async {
     if (_user == null) {
+      _errorMessage = 'Vui lòng đăng nhập để đổi vai trò.';
+      notifyListeners();
       return false;
     }
 
     if (!_user!.roles.contains(newRole)) {
       _errorMessage = 'Bạn không có quyền truy cập vai trò này.';
-
       notifyListeners();
+      return false;
+    }
+
+    if (_user!.activeRole == newRole) {
       return true;
     }
 
@@ -131,15 +143,13 @@ class AuthProvider extends ChangeNotifier {
 
     try {
       await _authService.switchRole(_user!.uid, newRole);
-      _user = await _authService.getUserProfile(_user!.uid);
-
+      _user = _user!.copyWith(activeRole: newRole);
       return true;
     } catch (e) {
       _errorMessage = _authService.getErrorMessage(e);
-
       return false;
     } finally {
-      _setLoading(true);
+      _setLoading(false);
     }
   }
 

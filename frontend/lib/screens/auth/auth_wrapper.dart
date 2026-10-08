@@ -14,6 +14,13 @@ class AuthWrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     final auth = context.watch<AuthProvider>();
 
+    if (!auth.isInitialized) {
+      return const Scaffold(
+        body: Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    }
     // Nếu chưa đăng nhập -> Hiển thị LoginScreen
     if (!auth.isAuthenticated || auth.user == null) {
       return const LoginScreen();

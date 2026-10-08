@@ -6,6 +6,7 @@ class UserModel {
   final String avatarUrl;
   final List<String> roles;
   final String activeRole;
+
   final String? restaurantId;
   final Map<String, dynamic>? defaultAddress;
   final bool? isShipperOnline;
@@ -25,18 +26,25 @@ class UserModel {
     this.shipperWallet,
   });
 
-  factory UserModel.fromMap(Map<String, dynamic> map, String id) {
+  factory UserModel.fromMap(
+    Map<String, dynamic> map,
+    String id,
+  ) {
     return UserModel(
       uid: id,
       name: map['name'] ?? '',
       email: map['email'] ?? '',
       phone: map['phone'] ?? '',
       avatarUrl: map['avatarUrl'] ?? '',
-      roles: List<String>.from(map['roles'] ?? ['customer']),
+      roles: List<String>.from(
+        map['roles'] ?? ['customer'],
+      ),
       activeRole: map['activeRole'] ?? 'customer',
       restaurantId: map['restaurantId'],
-      defaultAddress: map['defaultAddress'] != null 
-          ? Map<String, dynamic>.from(map['defaultAddress']) 
+      defaultAddress: map['defaultAddress'] != null
+          ? Map<String, dynamic>.from(
+              map['defaultAddress'],
+            )
           : null,
       isShipperOnline: map['isShipperOnline'],
       shipperWallet: (map['shipperWallet'] as num?)?.toDouble(),
@@ -56,5 +64,32 @@ class UserModel {
       'isShipperOnline': isShipperOnline,
       'shipperWallet': shipperWallet,
     };
+  }
+
+  UserModel copyWith({
+    String? name,
+    String? email,
+    String? phone,
+    String? avatarUrl,
+    List<String>? roles,
+    String? activeRole,
+    String? restaurantId,
+    Map<String, dynamic>? defaultAddress,
+    bool? isShipperOnline,
+    double? shipperWallet,
+  }) {
+    return UserModel(
+      uid: uid,
+      name: name ?? this.name,
+      email: email ?? this.email,
+      phone: phone ?? this.phone,
+      avatarUrl: avatarUrl ?? this.avatarUrl,
+      roles: roles ?? this.roles,
+      activeRole: activeRole ?? this.activeRole,
+      restaurantId: restaurantId ?? this.restaurantId,
+      defaultAddress: defaultAddress ?? this.defaultAddress,
+      isShipperOnline: isShipperOnline ?? this.isShipperOnline,
+      shipperWallet: shipperWallet ?? this.shipperWallet,
+    );
   }
 }
